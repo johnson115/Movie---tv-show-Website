@@ -1,0 +1,30 @@
+.container {
+  padding: 20px;
+
+}
+.cover{
+  background-image: url(https://img.freepik.com/free-vector/red-background-frames_23-2147593293.jpg?t=st=1723301110~exp=1723304710~hmac=570fe4a90d1736a013444eb5bb112d02ef7461f81da77f9a691700b8713cfb20&w=740);
+  background-repeat: no-repeat;
+  background-position:center center;
+  background-size: cover;
+}
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the space between cards */
+}
+
+.movie-card {
+  flex: 1 1 calc(25% - 20px); /* Adjust the size of each card relative to its container */
+  box-sizing: border-box;
+}
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.movie-card .p-5 {
+  padding: 16px;
+}
+

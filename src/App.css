@@ -1,0 +1,227 @@
+.hero-container{
+    position: relative;
+    background-color: black;
+    color: white;
+
+}
+body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    position: relative;
+    z-index: 200;
+    color:rgb(0, 0, 0);
+    height: 100%;
+    
+}
+.all{
+    height: 100vh;
+}
+.comtaimer{
+    width:100%;
+    height: auto;
+}
+
+nav{
+    background-color: black;
+    color: white;
+    width: 100%;
+    margin-right: 0;
+}
+button {
+    background-color: black;
+    color: yellow;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 1.7s, color 0.3s, padding 1s; 
+  }
+  
+  .peekimg {
+    position: absolute;
+    top: calc(100% + 10px); /* Position the image below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    width:70%;
+    border-radius: 50%;
+    opacity: 0; /* Hide the image initially */
+    transition: opacity 0.3s;
+  }
+  
+  .loop {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .loop:hover .peekimg {
+    opacity: 1;
+  }
+  
+  .loop button:hover {
+    background-color: darkblue;
+    color: yellow;
+    padding: 10px 40px;
+  }
+  /* Style for the search input */
+.search {
+    border-color: gold;
+    background-color: black;
+    color: gold; /* Text color for the placeholder */
+    transition: color 0.3s, background-color 0.9s; /* Add transition for smooth change */
+}
+
+/* Style for the placeholder text */
+.search::placeholder {
+    color: gold; /* Text color for the placeholder */
+}
+
+/* Style for the input when it's focused */
+.search:focus {
+    color: black; /* Text color when the input is focused */
+    background-color: gold; /* Background color when the input is focused */
+    border-color: black; /* Border color when the input is focused */
+}
+
+  .search::placeholder{
+    color: gold;
+  }
+  
+.figure-img{
+    margin-top:14%;
+    margin-left: 100px;
+    opacity: 0.9;
+    width:100%;
+    border-color: gold;
+    border-radius:10% 30%;
+}
+.nav-link{
+    flex: 1;
+    transition: flex .3s ease-in , transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link:hover{
+    opacity: 0.9; /* Redce opacity on hover */
+    transform: scale(1.2); /* Apply a slight scale zoom effect on hover */
+    transform: translateX(5px);
+    margin-left: 14px;
+} 
+    .shows{height: 15%;
+        width: 35%;
+    border-radius: 10% 30%;
+    margin-right:30%;
+display: inline-block;}
+.hero-text{
+    position: relative;
+    z-index: 200;
+    color:white;
+}
+.backdiv{
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    top: 32%;
+    left: 0;
+
+}
+.hero-backDrop{
+    position: absolute;
+    top: 8.5%;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 23%;
+    background-size: cover;
+    background-position: center center;
+    
+
+}
+.backend{
+    position: absolute;
+    top: 8.5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+.null-back{
+    position: absolute;
+    top: 8.5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    
+
+}
+.sicon{
+    width: 30px;
+}
+.cardie:hover{background-color:goldenrod;
+
+}
+.ch:hover{
+    font-size: 130%;
+}
+.pub{
+    background-color: transparent;
+    z-index: 200;
+    color: black;
+}
+.null{text-align: center;
+margin-top: 12%;}
+.views-back{
+    background-color: black;
+            height: 100%;
+            width: 100%;
+            
+            
+}
+
+.n-backDrop{
+    position:relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-position: center center;
+}
+.search{
+    background-color: black;
+}
+.home-here{
+    height: 100%;
+    width: 100%;
+}
+.cover{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+}
+.hero-container{
+    font-family:'comic sans ms';
+    overflow-x: hidden;
+
+}
+.anim{
+    color:black;
+    animation-name: now;
+    width: 30%;
+    animation-duration: 4s;
+}
+@keyframes now{
+    from{background-color: black;}
+    to{background-color: red;}
+}
+
