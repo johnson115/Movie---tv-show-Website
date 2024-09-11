@@ -36,7 +36,7 @@ const MovieView = () => {
     if (isLoading) {
       return (
         <>
-          <animated.div style={animationProps}>
+          <animated.div  style={animationProps}>
             <div>
               <Hero text="Wait a second ..." class="spinner-border text-dark" role="status" />
               <div class="card" aria-hidden="true">
@@ -51,7 +51,7 @@ const MovieView = () => {
                       <span class="placeholder col-6"></span>
                       <span class="placeholder col-8"></span>
                     </p>
-                    <a class="btn btn-primary disabled placeholder col-6"></a>
+                    <a href="" class="btn btn-primary disabled placeholder col-6"></a>
                   </div>
               </div>
             </div>

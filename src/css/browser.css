@@ -1,30 +1,104 @@
-.container {
-  padding: 20px;
-
-}
-.cover{
-  background-image: url(https://img.freepik.com/free-vector/red-background-frames_23-2147593293.jpg?t=st=1723301110~exp=1723304710~hmac=570fe4a90d1736a013444eb5bb112d02ef7461f81da77f9a691700b8713cfb20&w=740);
-  background-repeat: no-repeat;
-  background-position:center center;
-  background-size: cover;
-}
 .movie-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Adjust the space between cards */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px; /* Space between cards */
 }
 
-.movie-card {
+.book {
+  position: initial;
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+  
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  -webkit-transform: preserve-3d;
+  -ms-transform: preserve-3d;
+  transform: preserve-3d;
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #000;
   flex: 1 1 calc(25% - 20px); /* Adjust the size of each card relative to its container */
   box-sizing: border-box;
 }
 
-.movie-card img {
-  max-width: 100%;
+.cover {
+  top: 0;
+  position: absolute;
+ 
+  width: 100%;
   height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform-origin: 0;
+  -ms-transform-origin: 0;
+  transform-origin: 0;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.movie-card .p-5 {
-  padding: 16px;
+.book:hover .cover {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotatey(-82deg);
+  -ms-transform: rotatey(-82deg);
+  transform: rotatey(-82deg);
 }
 
+h2 {
+  text-align: center;
+  align-items: start;
+  margin-bottom: 10px;
+ color: rgb(7, 5, 112);
+  font-weight: bolder;
+}
+span{
+  font-weight: bolder;
+  font-size: 17px;
+}
+.card-img{
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+}
+.overview{
+  font-size: 13px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+p{
+  margin-bottom: 10px;
+}
+.cordonne{
+  width: 100%;
+  align-items: start;
+  
+  padding-left: 40px;
+}
+box-icon{
+  color: goldenrod;
+margin-bottom: -40px;
+
+}

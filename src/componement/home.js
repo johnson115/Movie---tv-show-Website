@@ -1,5 +1,4 @@
-import Hero from "./hero";
-import Browser from "./browser movie";
+
 import { Link } from "react-router-dom";
 
 const Home = () => {
