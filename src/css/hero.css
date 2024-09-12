@@ -1,0 +1,12 @@
+header{
+    background: linear-gradient(to  left bottom ,  #fca5a5 ,  #03304a ,#b91c1c );
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.highlight-keyword {
+    font-weight: bold;
+    color: #fca5a5; /* Example color */
+    background-color: rgba(0, 123, 255, 0.1); /* Example background color */
+    padding: 0 4px;
+    text-decoration: underline;
+}

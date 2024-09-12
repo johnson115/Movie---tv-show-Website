@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ".././css/browser.css";
-
+import { useNavigate } from "react-router-dom";
+import Hero from "./hero";
 
 const Browser = () => {
   const [movies, setMovies] = useState([]);
@@ -33,36 +34,64 @@ const Browser = () => {
     }
   }, []);
 
+  let navigate = useNavigate();
+
+  const handleNavigate = (movieId) => {
+    navigate(`/movie/${movieId}`);
+  };
+
   return (
     <>
-    <div className="cover bg-gray-500 ">
-      
+    <Hero text=" Discover Your Next Favorite Movie"/>
+    <div className=" myhome bg-gray-500" >
       <div className="container">
         <div className="movie-grid">
           {movies.map((movie) => (
-            
-             <div className="book movie-card" key={movie.id}>
+            <div className="book movie-card" key={movie.id}>
               <div className="cordonne">
-                <h2>{movie.original_title}</h2>
-                <p><span>Realise Date : </span> {movie.release_date} </p>
-                <p><span>Rate : </span> {movie.vote_average}/10  <box-icon name={movie.vote_average <= 5.700 ? "star-half" : "star"} color="goldenrod" type='solid' ></box-icon></p>
-                <p className="overview" > <span>Tagline : </span>
-                  {movie.tagline}</p>
-                </div>
-  
-  <div className="cover">
-    <img src= {movie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        : 'https://via.placeholder.com/300x450.png?text=No+Image+Available'} className="card-img" alt={movie.original_title} />
-  </div>
-</div>
-            
+                <h2 className="shadow-lg p-1 mb-5  rounded">{movie.original_title}</h2>
+                <p className="text-gray-400" >
+                  <span>Release Date: </span> {movie.release_date}
+                </p>
+                <p className="text-gray-400" >
+                  <span>Rate: </span> {movie.vote_average}/10{" "}
+                  <box-icon
+                    name={movie.vote_average <= 5.7 ? "star-half" : "star"}
+                    color="goldenrod"
+                    type="solid"
+                  ></box-icon>
+                </p>
+                <p className="overview text-gray-400">
+                  <span>Tagline: </span>
+                  {movie.tagline}
+                </p>
+
+                <button
+                  onClick={() => handleNavigate(movie.id)}
+                  className="button"
+                >
+                  <span>PLAY NOW</span>
+                </button>
+              </div>
+
+              <div className="cover">
+                <img
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      : "https://via.placeholder.com/300x450.png?text=No+Image+Available"
+                  }
+                  className="card-img"
+                  alt={movie.original_title}
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      
-    </div> 
-    </> );
+    </div>
+    </>
+  );
 };
 
 export default Browser;

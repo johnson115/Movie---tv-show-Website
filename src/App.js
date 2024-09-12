@@ -1,6 +1,6 @@
 import './App.css';
 
-import Navbar from './componement/navbar';
+
 import Home from './componement/home';
 import AboutView from './componement/aboutView';
 import { useState, useEffect } from 'react';
@@ -12,6 +12,7 @@ import NotFound from './componement/notFound';
 import NoResults from './componement/nullSearch';
 import Searched from './componement/searchedbtn';
 import Browser from './componement/browser movie';
+import Nav from './componement/nav';
 
 
 function App() {
@@ -35,9 +36,10 @@ function App() {
 
   return (
     <div>
-      
+      <Nav searchText={searchText} setSearchText={setSearchText}/>
       <Routes>
-        <Route path="/" element={<Home />} />
+      
+        <Route index element={<Home />} />
         <Route path="/about" element={<AboutView />} />
         <Route path="/home" element={<Browser />} />
         

@@ -1,97 +1,103 @@
+import React, { useState } from "react";
+import { Menu, X, Search } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import "../css/nav.css";
 
+const Nav = ({ searchText, setSearchText }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  const Test = useNavigate()
+  const updateSearchText = (e) => {
+    Test('/search')
+    setSearchText(e.target.value)
+  }
 
-import React from 'react';
-
-const Nav = () => {
   return (
-    <>
-  {/* component */}
-  <nav className="flex justify-between px-20 py-10 items-center bg-white">
-    <h1 className="text-xl text-gray-800 font-bold">HotCoffee</h1>
-    <div className="flex items-center">
-      <div className="flex items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 pt-0.5 text-gray-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-        <input
-          className="ml-2 outline-none bg-transparent font-"
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search..."
-        />
+    <nav className="bg-[#03304a] shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <a href="/" className="flex-shrink-0 text-white font-bold text-xl">
+              Logo
+            </a>
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                <a href="/" className="text-gray-300 hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Home
+                </a>
+                <a href="/home" className="text-gray-300 hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Browser
+                </a>
+                <a href="/about" className="text-gray-300 hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  About
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-4 flex items-center md:ml-6">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                </div>
+                <input
+                  value={searchText}
+                  onChange={updateSearchText}
+                  type="text"
+                  placeholder="Search"
+                  className="block w-full pl-10 pr-3 py-2 border border-[#044b6e] rounded-md leading-5 bg-[#022736] text-white placeholder-gray-400 focus:outline-none focus:ring-[#0596d7] focus:border-[#0596d7] sm:text-sm"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center md:hidden">
+            <button onClick={toggleSearch} aria-label="Toggle search" id="btn" className="text-white hover:bg-[#044b6e] p-2 rounded-md mr-2">
+              <Search className="h-5 w-5" />
+            </button>
+            <button onClick={toggleMenu} aria-label="Open menu" id="btn" className="text-white hover:bg-[#044b6e] p-2 rounded-md">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
       </div>
-      <ul className="flex items-center space-x-6">
-        <li className="font-semibold text-gray-700">Home</li>
-        <li className="font-semibold text-gray-700">Articles</li>
-        <li>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M12 14l9-5-9-5-9 5 9 5z" />
-            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-            />
-          </svg>
-        </li>
-        <li>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-            />
-          </svg>
-        </li>
-        <li>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-            />
-          </svg>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</>
 
+      {isSearchOpen && (
+        <div className="md:hidden px-2 py-2">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
+            </div>
+            <input
+            value={searchText}
+            onChange={updateSearchText}
+              type="text"
+              placeholder="Search"
+              className="block w-full pl-10 pr-3 py-2 border border-[#044b6e] rounded-md leading-5 bg-[#022736] text-white placeholder-gray-400 focus:outline-none focus:ring-[#0596d7] focus:border-[#0596d7] text-sm"
+            />
+          </div>
+        </div>
+      )}
+
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="/" className="text-gray-300 hover:bg-[#044b6e] hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              Home
+            </a>
+            <a href="/browser" className="text-gray-300 hover:bg-[#044b6e] hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              Browser
+            </a>
+            <a href="/about" className="text-gray-300 hover:bg-[#044b6e] hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              About
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
   );
-}
+};
 
 export default Nav;

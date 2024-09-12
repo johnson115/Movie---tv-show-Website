@@ -1,0 +1,22 @@
+#btn{
+    transform: none;
+    
+}
+
+#btn::before{
+    transform: none;
+    background-color: transparent;
+    transition: none;
+    position: relative;
+    color: white;
+    width: 0%;
+}
+
+#btn:hover::before{
+    transform: none;
+    background-color: transparent;
+    transition: none;
+    position: relative;
+    color: white;
+    width: 0%;
+}
