@@ -28,7 +28,7 @@ const MovieView = () => {
     opacity: 1,
     width: "100%",
 
-    from: { opacity: 10, width: "30%", },
+    from: { opacity: 10, width: "30%" },
     delay: 200,
   });
 
@@ -36,23 +36,30 @@ const MovieView = () => {
     if (isLoading) {
       return (
         <>
-          <animated.div  style={animationProps}>
+          <animated.div style={animationProps}>
             <div>
-              <Hero text="Wait a second ..." class="spinner-border text-dark" role="status" />
+              <Hero
+                text="Wait a second ..."
+                class="spinner-border text-dark"
+                role="status"
+              />
               <div class="card" aria-hidden="true">
-                  <div class="card-body">
-                    <h5 class="card-title placeholder-glow">
-                      <span class="placeholder col-6"></span>
-                    </h5>
-                    <p class="card-text placeholder-glow">
-                      <span class="placeholder col-7"></span>
-                      <span class="placeholder col-4"></span>
-                      <span class="placeholder col-4"></span>
-                      <span class="placeholder col-6"></span>
-                      <span class="placeholder col-8"></span>
-                    </p>
-                    <a href="" class="btn btn-primary disabled placeholder col-6"></a>
-                  </div>
+                <div class="card-body">
+                  <h5 class="card-title placeholder-glow">
+                    <span class="placeholder col-6">Loading Content</span>
+                  </h5>
+                  <p class="card-text placeholder-glow">
+                    <span class="placeholder col-7"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-6"></span>
+                    <span class="placeholder col-8"></span>
+                  </p>
+                  <a
+                    href=""
+                    class="btn btn-primary disabled placeholder col-6"
+                  ></a>
+                </div>
               </div>
             </div>
           </animated.div>
@@ -73,21 +80,25 @@ const MovieView = () => {
       return (
         <>
           <Hero text={movieDetails.original_title} backDrop={backDrop} />
-
-          <div className="container">
-            <div className="row my-5">
-              <div className="col-md-3">
-                <img
-                  src={poster_path}
-                  className="img-fluid shadow rounded"
-                  alt="my img"
-                />
-              </div>
-              <div className="col-md-9">
-                <h2>{movieDetails.original_title}</h2>
-                <p className="lead">{movieDetails.overview}</p>
-                <b>statue :</b>
-                {movieDetails.tagline}
+          <div className="content">
+            <div className="container">
+              <div className="row my-5">
+                <div className="col-md-3">
+                  <img
+                    src={poster_path}
+                    className="img-fluid shadow-lg rounded"
+                    alt="my img"
+                  />
+                </div>
+                <div className="col-md-9">
+                  <h2>{movieDetails.original_title}</h2>
+                  <p className="lead">
+                    <span> Overview : </span>
+                    {movieDetails.overview}
+                  </p>
+                  <b>statue :</b>
+                  {movieDetails.tagline}
+                </div>
               </div>
             </div>
           </div>

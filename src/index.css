@@ -16,18 +16,3 @@ code {
 body {
     font-family: 'Poppins', sans-serif;
 }
-.hover\:w-full:hover {
-    width: 100%;
-}
-.group:hover .group-hover\:w-full {
-    width: 100%;
-}
-.group:hover .group-hover\:inline-block {
-    display: inline-block;
-}
-.group:hover .group-hover\:flex-grow {
-    flex-grow: 1;
-}
-#right-side{
-  background-image: url("https://img.freepik.com/premium-photo/people-enjoying-movie-theater-sitting-comfortable-seats-with-popcorn-focused-screen_166222-18766.jpg?w=360");
-}
