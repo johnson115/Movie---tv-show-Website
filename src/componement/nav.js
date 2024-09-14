@@ -16,8 +16,8 @@ const Nav = ({ searchText, setSearchText }) => {
   }
 
   return (
-    <nav className="bg-[#03304a] shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-[#03304a] w-full shadow-md">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex-shrink-0 text-white font-bold text-xl">

@@ -13,6 +13,7 @@ import NoResults from './componement/nullSearch';
 import Searched from './componement/searchedbtn';
 import Browser from './componement/browser movie';
 import Nav from './componement/nav';
+import MovieDetails from './componement/movieDetails';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
         <Route path="/home" element={<Browser />} />
         
         <Route path="/search" element={<Search keyword={searchText} searchResults={searchResults} />} />
-        <Route path="/movie/:id" element={<MovieView />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path='*' element={<NotFound/>}/>
         <Route path='/search/result'  element={< Searched keyword={searchText} searchResults={searchResults}/>} />
 

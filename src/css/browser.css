@@ -110,7 +110,7 @@ box-icon{
 margin-bottom: -40px;
 
 }
-button {
+.movie-card button {
   border: none;
   margin-left: 20px;
   position: relative;
@@ -126,7 +126,7 @@ button {
   transform: translateY(8px)
  }
  
- button:after {
+ .movie-card button:after {
   content: '';
   position: absolute;
   left: 0;
@@ -136,11 +136,11 @@ button {
   transition: all 2s ease;
  }
  
- button:hover:after {
+ .movie-card button:hover:after {
   box-shadow: 0px -13px 56px 12px #ffffffa6;
  }
  
- button span {
+ .movie-card button span {
   position: absolute;
   width: 100%;
   font-size: 17px;
@@ -154,11 +154,11 @@ button {
   transition: all 1s ease;
  }
  
- button:hover span {
+ .movie-card button:hover span {
   color: white;
  }
  
- button:before {
+ .movie-card button:before {
   content: '';
   position: absolute;
   width: 0;
@@ -170,7 +170,7 @@ button {
   transition: all 1s ease;
  }
  
- button:hover:before {
+ .movie-card button:hover:before {
   width: 100%;
  }
  
