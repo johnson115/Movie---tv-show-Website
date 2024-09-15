@@ -17,13 +17,13 @@ Movie Browser is a dynamic web application designed to explore and browse movie 
 
 ## Screenshots
 
-### Interface
 
-![Interface](path/to/your/interface-image.png)
+### example of Movie Details
 
-### Movie Details
+![image](https://github.com/user-attachments/assets/e2752401-a86f-4c72-838e-1e5331b8a5ca)
+![image](https://github.com/user-attachments/assets/999fb93e-6764-4e99-8b5e-a796201d00e4)
 
-![Movie Details](path/to/your/movie-details-image.png)
+
 
 ## Getting Started
 
