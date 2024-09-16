@@ -167,6 +167,11 @@ const MovieDetails = () => {
       <div className="p-8">
         <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Now Playing</div>
         <h1 className="mt-1 text-2xl md:text-4xl font-bold text-white">{movieDetails.original_title}</h1>
+        <span className='text-gray-200 text-md'> Movie</span>
+       
+       
+
+
         <div className="mt-2 flex items-center flex-wrap">
           <Star className="h-5 w-5 text-yellow-400" />
           <span className="ml-2 text-gray-200">{movieDetails.vote_average}/10</span>
