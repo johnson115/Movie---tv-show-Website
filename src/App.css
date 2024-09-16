@@ -16,16 +16,19 @@ body {
  
 }
 #trailer{
-color : #b91c1c !important ;
+
 background-color: black;
 transition: all 0.7s;
-border: 1px solid white;
+
 
 }
+#trailer::focus{
+  background-color: #fca5a5;
+}
 #trailer:hover{
-  color: white !important;
-  border: 1px solid white;
-  background-color: #c52424;
+  color: black !important;
+  
+  background-color: #fca5a5;
 }
 
 

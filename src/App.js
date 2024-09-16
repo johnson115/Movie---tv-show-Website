@@ -14,6 +14,8 @@ import Searched from './componement/searchedbtn';
 import Browser from './componement/browser movie';
 import Nav from './componement/nav';
 import MovieDetails from './componement/movieDetails';
+import TvShows from './componement/tvshows browser';
+import TvShowDetails from './componement/tvshowdetails';
 
 
 function App() {
@@ -42,8 +44,9 @@ function App() {
       
         <Route index element={<Home />} />
         <Route path="/about" element={<AboutView />} />
-        <Route path="/home" element={<Browser />} />
-        
+        <Route path="/browseMovies" element={<Browser />} />
+        <Route path="/browseTvShows" element={<TvShows />} />
+        <Route path="/tvshow/:id" element={<TvShowDetails />} />
         <Route path="/search" element={<Search keyword={searchText} searchResults={searchResults} />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path='*' element={<NotFound/>}/>

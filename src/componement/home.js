@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
+import Modal from "./modal";
+import { useState } from "react";
+
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="bg-red-300 h-auto">
       <div className="mx-auto w-full sm:px-6 sm:py-14 lg:px-8">
@@ -34,12 +38,9 @@ const Home = () => {
               Thanks to our app, you can find your favorite movie.
             </p>
             <div className="mt-8 flex flex-col items-center gap-y-4 lg:flex-row lg:items-center lg:justify-start lg:gap-x-6"> {/* Adjust margin */}
-              <Link
-                to="/home"
-                className="rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                Get started
-              </Link>
+              
+<Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+
               <Link to="#" className="text-sm font-semibold leading-6 text-white">
                 Learn more <span aria-hidden="true">→</span>
               </Link>
