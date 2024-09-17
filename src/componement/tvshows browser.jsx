@@ -10,7 +10,7 @@ const TvShows = () => {
   const RATE_LIMIT_DELAY = 1000; // Delay in milliseconds (e.g., 1000ms = 1s)
 
   const generateRandomNumber = () => {
-    return Math.floor(Math.random() * 900);
+    return Math.floor(Math.random() * (130001 - 67000 + 1)) + 67000;
   };
 
   useEffect(() => {

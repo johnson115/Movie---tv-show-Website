@@ -9,7 +9,7 @@ const Browser = () => {
   const MOVIE_COUNT = 100; // Number of movies to fetch
 
   const generateRandomNumber = () => {
-    return Math.floor(Math.random() * 900); // Change the range as needed
+    return Math.floor(Math.random() * (121001 - 90000 + 1)) + 90000; // Change the range as needed
   };
 
   useEffect(() => {
@@ -60,7 +60,8 @@ const Browser = () => {
     <>
       <Hero text="Discover Your Next Favorite Movie" />
       <div className="myhome bg-gray-500">
-        <div className="container">
+        <div className="container justify-center">
+          
           <div className="movie-grid">
             {movies.map((movie) => (
               <div className="book movie-card" key={movie.id}>

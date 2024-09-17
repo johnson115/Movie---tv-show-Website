@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, House } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "../css/nav.css";
 
@@ -25,15 +25,13 @@ const Nav = ({ searchText, setSearchText }) => {
             </a>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a href="/" className="text-gray-300 hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Home
+              
+                <a href="/" className="text-gray-300 flex items-baseline hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                <House className="w-7 h-4 text-center align-items-center flex text-white" />
+                 Home
                 </a>
-                <a href="/home" className="text-gray-300 hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  Browser
-                </a>
-                <a href="/about" className="text-gray-300 hover:bg-[#044b6e] hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                  About
-                </a>
+                
+               
               </div>
             </div>
           </div>
@@ -48,7 +46,7 @@ const Nav = ({ searchText, setSearchText }) => {
                   onChange={updateSearchText}
                   type="text"
                   placeholder="Search"
-                  className="block w-full pl-10 pr-3 py-2 border border-[#044b6e] rounded-md leading-5 bg-[#022736] text-white placeholder-gray-400 focus:outline-none focus:ring-[#0596d7] focus:border-[#0596d7] sm:text-sm"
+                  className="block w-full  md:w-48 focus:w-64 transition-all duration-300 ease-in-out pl-10 pr-3 py-2 border border-[#044b6e] rounded-md leading-5 bg-[#022736] text-white placeholder-gray-400 focus:outline-none focus:ring-[#0596d7] focus:border-[#0596d7] sm:text-sm"
                 />
               </div>
             </div>
@@ -87,12 +85,7 @@ const Nav = ({ searchText, setSearchText }) => {
             <a href="/" className="text-gray-300 hover:bg-[#044b6e] hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               Home
             </a>
-            <a href="/browser" className="text-gray-300 hover:bg-[#044b6e] hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-              Browser
-            </a>
-            <a href="/about" className="text-gray-300 hover:bg-[#044b6e] hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-              About
-            </a>
+           
           </div>
         </div>
       )}
