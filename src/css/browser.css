@@ -14,6 +14,7 @@
   width: 270px;
   height: 400px;
   margin-left: 4px;
+  max-width: 300px;
   
   -webkit-box-shadow: 1px 1px 12px #000;
   box-shadow: 1px 1px 12px #000;

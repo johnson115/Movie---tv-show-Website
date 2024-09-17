@@ -9,11 +9,15 @@ body {
 .container {
   position: flex;
   z-index: 200;
+  
  
  
   
   
  
+}
+.filtrage{
+  backdrop-filter: blur(14px);
 }
 #trailer{
 

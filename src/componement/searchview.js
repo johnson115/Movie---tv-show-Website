@@ -1,98 +1,81 @@
-import Hero from "./hero";
-import "../css/browser.css";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import NoResults from "./nullSearch";
-import { useNavigate } from "react-router-dom";
-import "../css/hero.css";
+import CardItem from "./card";
+import Hero from "./hero";
+import Filtre from "./filtre";
 
+const fetchSearchResults = async (query) => {
+    const apiKey = "68638adb4db3967ed4cc1ce3da324fb6"; // Replace with your actual API key
+    const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+    const tvUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${query}`;
+    
+    const movieResponse = await fetch(movieUrl);
+    const tvResponse = await fetch(tvUrl);
 
-const CardMovie = ({ movie }) => {
-    let navigate = useNavigate();
+    const movieData = await movieResponse.json();
+    const tvData = await tvResponse.json();
 
-    const handleNavigate = (movieId) => {
-      navigate(`/movie/${movieId}`);
+    return {
+        movies: movieData.results,
+        tvShows: tvData.results
     };
-  
-    let posterUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-    if (movie.poster_path == null) {
-        posterUrl = 'https://via.placeholder.com/300x450.png?text=No+Image+Available'
-    }
-    const detailsUrl = `/movie/${movie.id}`
-    return (
-        <div className="book movie-card" key={movie.id}>
-              <div className="cordonne">
-                <h2 className="shadow-lg p-1 mb-5  rounded">{movie.original_title}</h2>
-                <p className="text-gray-400" >
-                  <span>Release Date: </span> {movie.release_date}
-                </p>
-                <p className="text-gray-400" >
-                  <span>Rate: </span> {movie.vote_average}/10{" "}
-                  <box-icon
-                    name={movie.vote_average <= 5.7 ? "star-half" : "star"}
-                    color="goldenrod"
-                    type="solid"
-                  ></box-icon>
-                </p>
-                <p className="overview text-gray-400">
-                  <span>Tagline: </span>
-                  {movie.tagline}
-                </p>
+};
 
-                <button
-                  onClick={() => handleNavigate(movie.id)}
-                  className="button"
-                >
-                  <span>PLAY NOW</span>
-                </button>
-              </div>
+const Search = ({ keyword }) => {
+    const [searchResults, setSearchResults] = useState([]);
+    const [filteredResults, setFilteredResults] = useState([]);
+    const [filterType, setFilterType] = useState("movie"); // State for filtering by movie or tv
 
-              <div className="cover">
-                <img
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                      : "https://via.placeholder.com/300x450.png?text=No+Image+Available"
-                  }
-                  className="card-img"
-                  alt={movie.original_title}
-                />
-              </div>
-            </div>
-    )
-}
+    useEffect(() => {
+        const search = async () => {
+            const results = await fetchSearchResults(keyword);
+            // Combine both movies and TV shows into a single array
+            const combinedResults = [
+                ...results.movies.map(item => ({ ...item, type: 'movie' })),
+                ...results.tvShows.map(item => ({ ...item, type: 'tv' }))
+            ];
+            setSearchResults(combinedResults);
+        };
 
-const Search = ({ keyword, searchResults }) => {
+        search();
+    }, [keyword]);
+
+    // Update the filtered results based on the selected filter
+    useEffect(() => {
+        const results = searchResults.filter(result => result.type === filterType);
+        setFilteredResults(results);
+    }, [filterType, searchResults]);
+
+    const handleFilterChange = (type) => {
+        setFilterType(type); // Change the filter type when the user selects a different tab
+    };
+
     const title = (
         <div>
             You are searching for <span className="highlight-keyword text-3xl font-bold tracking-tight sm:text-4xl">{keyword}</span>
         </div>
     );
-    //const titlen=`No Search Results founded  as ${keyword}`
 
-    const searchHtml = Array.isArray(searchResults) ? searchResults.map((obj, i) => {
-        return <CardMovie movie={obj} key={i} />
-    }) : null;
-    if (searchResults.length === 0) {
-        return <NoResults />
+    if (filteredResults.length === 0) {
+        return <NoResults />;
     }
-    
+
     return (
-        <>
-
-            <Hero text={title} />
-
-            {searchHtml &&
-            
-                <div className="views-back myhome" >
-                    <div className="container">
-                        <div className="row">
-                            {searchHtml}
-                        </div>
-                    </div>
-                </div>}
-                
-        </>
-    )
-}
+      <>
+        <Hero text={title} />
+        <div className="views-back myhome">
+          <div className="container mx-auto justify-center px-4">
+            {/* Pass the filter change handler to the Filtre component */}
+            <Filtre onFilterChange={handleFilterChange} />
+            <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center mt-8">
+              {filteredResults.map((obj, i) => (
+                <CardItem item={obj} type={obj.type} key={i} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+};
 
 export default Search;

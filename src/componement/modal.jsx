@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Dialog } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import { Clapperboard } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { CirclePlay, Clapperboard, Film, Tv } from 'lucide-react'
 
 export default function Modal({isOpen , setIsOpen}) {
-  
+  const Navigate = useNavigate();
 
   return (
     <>
       <button
         type="button"
+        id='trailer'
         onClick={() => setIsOpen(true)}
-        className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+        className="rounded-md  flex  bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
+        
         Let's Start 
+        <CirclePlay className='ml-2' />
       </button>
+
 
       <Dialog
         open={isOpen}
@@ -28,24 +32,28 @@ export default function Modal({isOpen , setIsOpen}) {
             <div className="flex flex-col items-center p-6 space-y-6"> 
               <Clapperboard className="h-24 w-24 text-yellow-500" />
               <Dialog.Title className="text-lg font-medium leading-6 text-gray-100">
-              Welcome to Movie Browser, your gateway to discovering the best movies and TV shows! Whether you're in the mood for an epic movie adventure or looking to dive into your favorite TV series, we’ve got you covered. Choose your preferred experience below and start browsing
+              Welcome to the ultimate entertainment browser! Whether you're in the mood for thrilling movies or captivating TV shows, we've got you covered. Choose your adventure below and start exploring a world of entertainment
               </Dialog.Title>
             </div>
 
             <div className="flex justify-center space-x-4 p-6">
               <button
                 type="button"
-                className="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
-                
+                id='trailer'
+                className="inline-flex text-white justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
+                onClick={()=> Navigate("/browseMovies") }
               >
                 Browse Movies
+                <Film  />
               </button>
               <button
                 type="button"
-                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                
+                id='trailer'
+                className="inline-flex text-white justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                onClick={()=> Navigate("/browseTvShows") }
               >
                 Browse Tv Shows
+                <Tv  />
               </button>
             </div>
           </Dialog.Panel>
