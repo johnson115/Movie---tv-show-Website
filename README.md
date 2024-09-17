@@ -15,7 +15,7 @@ Movie Browser is a dynamic web application designed to explore and browse movie 
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
 - **TMDb API**: Fetches movie data, including details, ratings, and trailers.
 
-## Screenshots
+## Interface
 
 
 ### example of Movie Details
@@ -39,4 +39,4 @@ To get this project up and running on your local machine, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/movie-browser.git
+   git clone https://github.com/johnson115/Movie---tv-show-Website.git
