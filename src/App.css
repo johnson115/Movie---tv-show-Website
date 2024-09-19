@@ -1,9 +1,9 @@
 body {
-  height: 100vh;
+  height: 100%;
   width:100%;
   margin: 0;
   padding: 0;
-  background-color: #fca5a5;
+  background: linear-gradient(to  left bottom ,  #fca5a5 ,  #03304a ,#b91c1c );
 }
 
 .container {

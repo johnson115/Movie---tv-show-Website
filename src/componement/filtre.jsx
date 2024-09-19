@@ -20,7 +20,7 @@ export default function Filtre({ onFilterChange }) {
 
   const handleTabChange = (type) => {
     setSelectedTab(type);
-    onFilterChange(type); // Notify parent component (Search) about the change
+    onFilterChange(type); 
   };
 
   return (

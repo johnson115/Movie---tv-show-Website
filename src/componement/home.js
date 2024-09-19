@@ -6,9 +6,9 @@ import { useState } from "react";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="bg-red-300 h-auto">
-      <div className="mx-auto w-full sm:px-6 sm:py-14 lg:px-8">
-        <div className="relative max-w-10xl isolate overflow-hidden bg-red-700 px-6 shadow-3xl sm:rounded-3xl sm:px-16 lg:flex lg:gap-x-20 lg:px-24 xs:pt-10 lg:pt-0 h-auto max-h-[700px]"> {/* Limit the height */}
+    <div className="  h-auto">
+      <div className="mx-auto  h-auto w-full sm:px-6 sm:py-14 lg:px-8">
+        <div className="relative  max-w-10xl isolate overflow-hidden bg-red-700 px-6 shadow-3xl sm:rounded-3xl sm:px-16 lg:flex lg:gap-x-20 lg:px-24 xs:pt-10 lg:pt-0  "> {/* Limit the height */}
           <svg
             viewBox="0 0 1024 1024"
             className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
@@ -46,13 +46,13 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className="relative w-full max-w-md mt-10 lg:mt-0 lg:w-1/2">
-            <img
-              className="w-full rounded-md top-0 bg-white/5 ring-1 ring-white/10 h-[490px] object-cover" // Set height and object cover
+          <div className="relative h-full w-full max-w-md mt-10 lg:mt-0 lg:w-1/2">
+            <img 
+              className="w-full xs:h-[700px] rounded-md top-0 bg-white/5 ring-1 ring-white/10 md:h-[490px] object-cover" // Set height and object cover
               src="https://img.freepik.com/premium-photo/people-enjoying-movie-theater-sitting-comfortable-seats-with-popcorn-focused-screen_166222-18766.jpg?w=360"
               alt="App screenshot"
               width={700}
-              height={300} // Set image height to 300px
+ // Set image height to 300px
             />
           </div>
         </div>
