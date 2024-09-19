@@ -5,6 +5,29 @@ import Hero from "./hero";
 import Pagination from "./scrolling";
 import Filtrage from "./filtrage";
 
+// Mapping of genre names to TMDb genre IDs
+const genreMap = {
+  action: 28,
+  adventure: 12,
+  animation: 16,
+  comedy: 35,
+  crime: 80,
+  documentary: 99,
+  drama: 18,
+  family: 10751,
+  fantasy: 14,
+  history: 36,
+  horror: 27,
+  music: 10402,
+  mystery: 9648,
+  romance: 10749,
+  sciFi: 878, // Science Fiction
+  tvMovie: 10770,
+  thriller: 53,
+  war: 10752,
+  western: 37,
+};
+
 const Browser = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,8 +46,9 @@ const Browser = () => {
         url += `&sort_by=vote_average.desc`;
       } else if (filterType === 'popularity') {
         url += `&sort_by=popularity.desc`;
-      } else if (filterType === 'date') {
-        url += `&sort_by=release_date.desc`;
+      } else if (genreMap[filterType]) {
+        const genreId = genreMap[filterType];
+        url += `&with_genres=${genreId}`;
       }
 
       const response = await fetch(url);
@@ -52,7 +76,7 @@ const Browser = () => {
 
   const handleFilterChange = (filterType) => {
     setFilter(filterType);
-    fetchMovies(1 , filterType);
+    fetchMovies(1, filterType);
     setCurrentPage(1);
   };
 
@@ -75,8 +99,8 @@ const Browser = () => {
             setTotalPages={setTotalPages}
             totalPages={totalPages}
           />
-          <h2 className="shadow-lg p-1 mb-5 rounded">
-            Current Page: {currentPage}
+          <h2 className="shadow-lg text-white p-1 mb-5 rounded">
+            Current Page: <span className="text-gray-300 ml-1"> {currentPage}</span>
           </h2>
           <div className="movie-grid">
             {movies.map((movie) => (
@@ -95,8 +119,13 @@ const Browser = () => {
                     ></box-icon>
                   </p>
                   <p className="overview text-gray-400">
-                    <span>Tagline: </span>
-                    {movie.tagline}
+                    <span>genres : </span>
+                    {movie.genre_ids.map((genreId, index) => (
+    <span key={index} className="text-gray-200">
+      {Object.keys(genreMap).find(key => genreMap[key] === genreId)}
+      {index < movie.genre_ids.length - 1 ? ', ' : ''} {/* Add comma between genres */}
+    </span>
+  ))}
                   </p>
                   <button
                     onClick={() => navigate(`/movie/${movie.id}`)}

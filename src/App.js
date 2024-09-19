@@ -16,6 +16,8 @@ import Nav from './componement/nav';
 import MovieDetails from './componement/movieDetails';
 import TvShows from './componement/tvshows browser';
 import TvShowDetails from './componement/tvshowdetails';
+import { SwipeableDrawer } from '@mui/material';
+import SwipeableTemporaryDrawer from './componement/about';
 
 
 function App() {
@@ -43,7 +45,7 @@ function App() {
       <Routes>
       
         <Route index element={<Home />} />
-        <Route path="/about" element={<AboutView />} />
+        <Route path="/about" element={<SwipeableTemporaryDrawer />} />
         <Route path="/browseMovies" element={<Browser />} />
         <Route path="/browseTvShows" element={<TvShows />} />
         <Route path="/tvshow/:id" element={<TvShowDetails />} />

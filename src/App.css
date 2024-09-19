@@ -10,11 +10,10 @@ body {
   position: flex;
   z-index: 200;
   
- 
- 
-  
-  
- 
+
+}
+#drawer{
+  background: linear-gradient(to  left bottom ,  #fca5a5 ,  #03304a ,#b91c1c );
 }
 .filtrage{
   backdrop-filter: blur(14px);
