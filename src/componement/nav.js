@@ -14,14 +14,17 @@ const Nav = ({ searchText, setSearchText }) => {
     Test('/search')
     setSearchText(e.target.value)
   }
+  const logo = require("./media/LOGO.png");
 
   return (
     <nav className="bg-[#03304a] w-full shadow-md">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="flex-shrink-0 text-white font-bold text-xl">
-              Logo
+          <a href="/" className="flex-shrink-0 flex  text-white font-bold text-xl">
+            <img src={logo} style={{width: "120px"}} alt="logo of the site" />
+           
+              
             </a>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
