@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Star, Calendar, Clock } from "lucide-react";
-import { useSpring, animated } from 'react-spring';
+
 import React from 'react';
 import Hero from './hero';
+import Searchanimated from './searchanimation';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -50,12 +51,7 @@ const MovieDetails = () => {
     fetchMovieData();
   }, [id]);
 
-  const animationProps = useSpring({
-    opacity: 1,
-    width: "100%",
-    from: { opacity: 0, width: "30%" },
-    delay: 200,
-  });
+ 
 
   const YouTubeModal = ({ isOpen, onClose, videoKey }) => {
     if (!isOpen || !videoKey) return null;
@@ -102,40 +98,15 @@ const MovieDetails = () => {
   function renderMovie() {
     if (isLoading) {
       return (
-        <animated.div style={animationProps} className="flex bg-red-300 justify-center items-center min-h-screen">
-          <div>
-            <Hero
-              text="Wait a second ..."
-              className="spinner-border text-dark"
-              role="status"
-            />
-            <div className="card" aria-hidden="true">
-              <div className="card-body">
-                <h5 className="card-title placeholder-glow">
-                  <span className="placeholder col-6">Loading Content</span>
-                </h5>
-                <p className="card-text placeholder-glow">
-                  <span className="placeholder col-7"></span>
-                  <span className="placeholder col-4"></span>
-                  <span className="placeholder col-4"></span>
-                  <span className="placeholder col-6"></span>
-                  <span className="placeholder col-8"></span>
-                </p>
-                <button
-                  className="btn btn-primary disabled placeholder col-6"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </animated.div>
+        <>
+        <Hero text="Hold on a moment" />
+        <Searchanimated/>
+        </>
       );
     }
 
     if (movieDetails) {
-      let poster_path = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;
-      if (!movieDetails.poster_path) {
-        poster_path = "https://via.placeholder.com/300x450.png?text=No+Image+Available";
-      }
+      
 
       const backDrop = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
       const newPoster_path = `https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`;

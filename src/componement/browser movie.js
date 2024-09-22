@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Hero from "./hero";
 import Pagination from "./scrolling";
 import Filtrage from "./filtrage";
+import Searchanimated from "./searchanimation";
 
 // Mapping of genre names to TMDb genre IDs
 const genreMap = {
@@ -34,11 +35,13 @@ const Browser = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [filter, setFilter] = useState('rate');
+  const [loading, setLoading] = useState(true); // New loading state
   const itemsPerPage = 9;
 
   const navigate = useNavigate();
 
   const fetchMovies = async (page, filterType) => {
+    setLoading(true); // Set loading to true when fetching starts
     try {
       let url = `https://api.themoviedb.org/3/discover/movie?api_key=68638adb4db3967ed4cc1ce3da324fb6&language=en-US&page=${page}&per_page=${itemsPerPage}`;
       
@@ -59,6 +62,7 @@ const Browser = () => {
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
+    setLoading(false); // Set loading to false after fetching is complete
   };
 
   const handlePageChange = (page) => {
@@ -90,64 +94,72 @@ const Browser = () => {
       <div className="myhome bg-gray-500">
         <div className="container justify-center">
           <Filtrage onFilterChange={handleFilterChange} />
-          <Pagination
-            totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-            onRefresh={handleRefresh}
-            setTotalPages={setTotalPages}
-            totalPages={totalPages}
-          />
-          <h2 className="shadow-lg text-white p-1 mb-5 rounded">
-            Current Page: <span className="text-gray-300 ml-1"> {currentPage}</span>
-          </h2>
-          <div className="movie-grid">
-            {movies.map((movie) => (
-              <div className="book movie-card" key={movie.id}>
-                <div className="cordonne">
-                  <h2 className="shadow-lg p-1 mb-5 rounded">{movie.original_title}</h2>
-                  <p className="text-gray-400">
-                    <span>Release Date: </span> {movie.release_date}
-                  </p>
-                  <p className="text-gray-400">
-                    <span>Rate: </span> {movie.vote_average}/10{" "}
-                    <box-icon
-                      name={movie.vote_average <= 5.7 ? "star-half" : "star"}
-                      color="goldenrod"
-                      type="solid"
-                    ></box-icon>
-                  </p>
-                  <p className="overview text-gray-400">
-                    <span>genres : </span>
-                    {movie.genre_ids.map((genreId, index) => (
-    <span key={index} className="text-gray-200">
-      {Object.keys(genreMap).find(key => genreMap[key] === genreId)}
-      {index < movie.genre_ids.length - 1 ? ', ' : ''} {/* Add comma between genres */}
-    </span>
-  ))}
-                  </p>
-                  <button
-                    onClick={() => navigate(`/movie/${movie.id}`)}
-                    className="button"
-                  >
-                    <span>PLAY NOW</span>
-                  </button>
-                </div>
-                <div className="cover">
-                  <img
-                    src={
-                      movie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        : "https://via.placeholder.com/300x450.png?text=No+Image+Available"
-                    }
-                    className="card-img"
-                    alt={movie.original_title}
-                  />
-                </div>
+
+          {/* Show the loader when fetching */}
+          {loading ? (
+            <Searchanimated />
+          ) : (
+            <>
+              <Pagination
+                totalItems={totalItems}
+                itemsPerPage={itemsPerPage}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+                onRefresh={handleRefresh}
+                setTotalPages={setTotalPages}
+                totalPages={totalPages}
+              />
+              <h2 className="shadow-lg text-white p-1 mb-5 rounded">
+                Current Page: <span className="text-gray-300 ml-1"> {currentPage}</span>
+              </h2>
+              <div className="movie-grid">
+                {movies.map((movie) => (
+                  <div className="book movie-card" key={movie.id}>
+                    <div className="cordonne">
+                      <h2 className="shadow-lg p-1 mb-5 rounded">{movie.original_title}</h2>
+                      <p className="text-gray-400">
+                        <span>Release Date: </span> {movie.release_date}
+                      </p>
+                      <p className="text-gray-400">
+                        <span>Rate: </span> {movie.vote_average}/10{" "}
+                        <box-icon
+                          name={movie.vote_average <= 5.7 ? "star-half" : "star"}
+                          color="goldenrod"
+                          type="solid"
+                        ></box-icon>
+                      </p>
+                      <p className="overview text-gray-400">
+                        <span>Genres: </span>
+                        {movie.genre_ids.map((genreId, index) => (
+                          <span key={index} className="text-gray-200">
+                            {Object.keys(genreMap).find(key => genreMap[key] === genreId)}
+                            {index < movie.genre_ids.length - 1 ? ', ' : ''}
+                          </span>
+                        ))}
+                      </p>
+                      <button
+                        onClick={() => navigate(`/movie/${movie.id}`)}
+                        className="button"
+                      >
+                        <span>PLAY NOW</span>
+                      </button>
+                    </div>
+                    <div className="cover">
+                      <img
+                        src={
+                          movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                            : "https://via.placeholder.com/300x450.png?text=No+Image+Available"
+                        }
+                        className="card-img"
+                        alt={movie.original_title}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
       </div>
     </>

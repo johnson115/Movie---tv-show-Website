@@ -77,12 +77,16 @@ transition: all 0.7s;
 }
 .null-back {
   position: absolute;
-  top: 8.5%;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center center;
+  background: linear-gradient(to  left bottom ,  #fca5a5 ,  #03304a ,#b91c1c );
+}
+.noresult{
+  width: 400px;
+ top: 20%;
+  margin-top: auto; margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .sicon {
   width: 30px;
@@ -96,11 +100,12 @@ transition: all 0.7s;
 .pub {
   background-color: transparent;
   z-index: 200;
-  color: black;
+  
 }
-.null {
+.pub .null {
   text-align: center;
   margin-top: 12%;
+  background-color:transparent;
 }
 .views-back {
   background-color: black;

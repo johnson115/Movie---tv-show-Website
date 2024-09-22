@@ -2,14 +2,12 @@ import Modal from "./modal";
 import { useState } from "react";
 import ProfileDrawer from "./about";
 
-const Home = () => {
+const Home = ({profilOpen ,  toggleDrawer}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [profilOpen, setProfilOpen] = useState(false);
+  
 
   // Function to toggle the profile drawer
-  const toggleDrawer = () => {
-    setProfilOpen(!profilOpen);
-  };
+ 
 
   return (
     <div className="h-auto">
@@ -41,12 +39,12 @@ const Home = () => {
               <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
 
               
-              <button onClick={toggleDrawer} className="text-sm font-semibold leading-6 text-white">
+              <button onClick={toggleDrawer} id="trailer" className="text-sm font-semibold shadow rounded-md   border p-2 border-white leading-6 text-white">
                 Learn more <span aria-hidden="true">→</span>
               </button>
 
               
-              <ProfileDrawer open={profilOpen} toggleDrawer={toggleDrawer} />
+               
             </div>
           </div>
           <div className="relative h-full w-full max-w-md mt-10 lg:mt-0 lg:w-1/2">
@@ -55,6 +53,7 @@ const Home = () => {
               src="https://img.freepik.com/premium-photo/people-enjoying-movie-theater-sitting-comfortable-seats-with-popcorn-focused-screen_166222-18766.jpg?w=360"
               alt="App screenshot"
               width={700}
+              loading="lazy"
             />
           </div>
         </div>

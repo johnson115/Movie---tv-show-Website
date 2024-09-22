@@ -2,7 +2,7 @@
 
 import { Box, Drawer, Avatar, useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Webhook, Network } from 'lucide-react';
+import { Facebook,  Globe , Linkedin} from 'lucide-react';
 
 export default function ProfileDrawer({ open, toggleDrawer }) {
   const theme = useTheme();
@@ -42,17 +42,15 @@ export default function ProfileDrawer({ open, toggleDrawer }) {
             This site was created to help movie and TV show enthusiasts discover everything they need to know before choosing what to watch next. Whether you're searching for the latest blockbuster or exploring a new TV series, this platform provides you with ratings, reviews, and detailed information to make informed choices. I built this site to simplify the process of finding content that matches your taste, while offering a seamless browsing experience to explore movies and shows across various genres. </p>
             <h2 className="text-lg font-semibold mb-4">Contact</h2>
             <div className="flex justify-center space-x-4">
-              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.facebook.com/profile.php?id=61556117758924" target="_blank" rel="noopener noreferrer">
                 <Facebook className="w-6 h-6 text-white hover:text-blue-400" />
               </Link>
-              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <Twitter className="w-6 h-6 text-white hover:text-blue-400" />
+              
+              <Link href="www.amennoomen.com" target="_blank" rel="noopener noreferrer">
+                <Globe className="w-6 h-6 text-white hover:text-blue-400" />
               </Link>
-              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <Network />
-              </Link>
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <Instagram className="w-6 h-6 text-white hover:text-pink-400" />
+              <Link href="https://www.linkedin.com/in/amen-allah-naamen-/" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-6 h-6 text-white hover:text-pink-400" />
               </Link>
             </div>
           </div>

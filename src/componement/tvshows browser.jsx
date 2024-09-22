@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Hero from "./hero";
 import Pagination from "./scrolling";
 import Filtrage from "./filtrage";
+import Searchanimated from "./searchanimation";
 
 // Updated genre IDs for TV shows
 const genreMap = {
@@ -36,11 +37,13 @@ const TvShows = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [filter, setFilter] = useState("rate");
+  const [loading, setLoading] = useState(true);
   const itemsPerPage = 9;
 
   const navigate = useNavigate();
 
   const fetchTvShows = async (page, filterType) => {
+    setLoading(true);
     try {
       let url = `https://api.themoviedb.org/3/discover/tv?api_key=68638adb4db3967ed4cc1ce3da324fb6&language=en-US&page=${page}&per_page=${itemsPerPage}`;
 
@@ -61,6 +64,7 @@ const TvShows = () => {
     } catch (error) {
       console.error("Error fetching TV shows:", error);
     }
+    setLoading(false);
   };
 
   const handlePageChange = (page) => {
@@ -104,7 +108,10 @@ const TvShows = () => {
               <h2 className="shadow-lg text-white p-1 mb-5 rounded">
             Current Page: <span className="text-gray-300 ml-1"> {currentPage}</span>
           </h2>
-          <div className="movie-grid">
+          {loading ? (
+            <Searchanimated />
+          ):
+          (<div className="movie-grid">
             {tvShows.map((tvShow) => (
               <div className="book movie-card" key={tvShow.id}>
                 <div className="cordonne">
@@ -148,7 +155,8 @@ const TvShows = () => {
                 </div>{" "}
               </div>
             ))}{" "}
-          </div>{" "}
+          </div>
+        )}
         </div>{" "}
       </div>{" "}
     </>
