@@ -93,7 +93,12 @@ const TvShows = () => {
   return (
     <>
       <Hero text="Discover Your Next Favorite TV Show" />
-      <div className="myhome bg-gray-500">
+      {loading ? (
+            <Searchanimated />
+          ):
+          
+      (<div className="myhome ">
+      
         <div className="container justify-center">
           <Filtrage onFilterChange={handleFilterChange} />
           <Pagination
@@ -108,10 +113,7 @@ const TvShows = () => {
               <h2 className="shadow-lg text-white p-1 mb-5 rounded">
             Current Page: <span className="text-gray-300 ml-1"> {currentPage}</span>
           </h2>
-          {loading ? (
-            <Searchanimated />
-          ):
-          (<div className="movie-grid">
+         <div className="movie-grid">
             {tvShows.map((tvShow) => (
               <div className="book movie-card" key={tvShow.id}>
                 <div className="cordonne">
@@ -156,9 +158,9 @@ const TvShows = () => {
               </div>
             ))}{" "}
           </div>
-        )}
+        
         </div>{" "}
-      </div>{" "}
+      </div>)}
     </>
   );
 };

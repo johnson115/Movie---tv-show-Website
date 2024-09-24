@@ -4,7 +4,7 @@
   gap: 20px; /* Space between cards */
 }
 .myhome{
-  background: linear-gradient(to  left bottom , #03304a, #b91c1c , #0090cb );
+  background: transparent;
 
 }
 
@@ -76,7 +76,7 @@ h2 {
   text-align: center;
   align-items: start;
   margin-bottom: 10px;
- color: #fca5a5;
+ color:#0f0cd1;
   font-weight: bolder;
   filter: drop-shadow(7px 7px 7px 7px white);
 }
@@ -169,6 +169,10 @@ margin-bottom: -40px;
   top: 50%;
   transform: translate(-50%, -50%);
   transition: all 1s ease;
+ }
+ .movie-card{
+  background: transparent;
+  backdrop-filter: blur(7px);
  }
  
  .movie-card button:hover:before {

@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Star, Calendar, Clock } from "lucide-react";
-
 import React from 'react';
 import Hero from './hero';
 import Searchanimated from './searchanimation';
+import FeedbackModal from './feedbackmodal';
+
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [videoKey, setVideoKey] = useState(null);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -43,6 +45,7 @@ const MovieDetails = () => {
         setVideoKey(trailerKey || ""); // Fallback to empty string if no video key found
 
         setIsLoading(false);
+        setIsFeedbackOpen(true);
       } catch (error) {
         console.error('Error fetching movie data:', error);
       }
@@ -57,7 +60,8 @@ const MovieDetails = () => {
     if (!isOpen || !videoKey) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div className="fixed inset-0  bg-opacity-75 flex items-center justify-center z-50">
+        
         <div className="bg-transparent p-2 pt-5 shadow-lg rounded-lg w-full max-w-2xl relative">
           <button
             onClick={onClose}
@@ -201,6 +205,10 @@ const MovieDetails = () => {
             onClose={() => setIsModalOpen(false)}
             videoKey={videoKey}
           />
+           <FeedbackModal
+          isOpen={isFeedbackOpen}
+          onClose={() => setIsFeedbackOpen(false)}
+        />
         </>
       );
     }

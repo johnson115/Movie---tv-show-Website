@@ -72,6 +72,7 @@ const Search = ({ keyword }) => {
       <>
         <Hero text={title} />
         <div className="views-back myhome">
+        
           <div className="container mx-auto justify-center px-4">
             {/* Pass the filter change handler to the Filtre component */}
             <Filtre onFilterChange={handleFilterChange} />

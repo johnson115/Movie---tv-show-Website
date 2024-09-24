@@ -91,14 +91,16 @@ const Browser = () => {
   return (
     <>
       <Hero text="Discover Your Next Favorite Movie" />
-      <div className="myhome bg-gray-500">
+      {loading ? (
+            <Searchanimated />
+          ) : (
+      <div className="myhome ">
+      
         <div className="container justify-center">
           <Filtrage onFilterChange={handleFilterChange} />
 
           {/* Show the loader when fetching */}
-          {loading ? (
-            <Searchanimated />
-          ) : (
+          
             <>
               <Pagination
                 totalItems={totalItems}
@@ -159,9 +161,10 @@ const Browser = () => {
                 ))}
               </div>
             </>
-          )}
+          
         </div>
       </div>
+      )}
     </>
   );
 };

@@ -15,7 +15,8 @@ const Nav = ({ searchText, setSearchText, toggleDrawer }) => {
   const logo = require("./media/LOGO.png");
 
   return (
-    <nav className="bg-[#03304a] w-full shadow-md">
+    <nav className=" w-full shadow-md">
+      
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">

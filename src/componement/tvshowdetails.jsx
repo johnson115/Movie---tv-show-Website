@@ -128,6 +128,7 @@ const TvShowDetails = () => {
         <>
           <Hero text={TvShowDetails.original_name} backDrop={backDrop} />
           <div className="min-h-screen w-full  py-8 px-4 md:px-8">
+          
             <div className="max-w-6xl mx-auto bg-red-700 rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="w-full">

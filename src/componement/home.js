@@ -11,6 +11,7 @@ const Home = ({profilOpen ,  toggleDrawer}) => {
 
   return (
     <div className="h-auto">
+      
       <div className="mx-auto h-auto w-full sm:px-6 sm:py-14 lg:px-8">
         <div className="relative max-w-10xl isolate overflow-hidden bg-red-700 px-6 shadow-3xl sm:rounded-3xl sm:px-16 lg:flex lg:gap-x-20 lg:px-24 xs:pt-10 lg:pt-0">
           <svg
