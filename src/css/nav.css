@@ -20,3 +20,8 @@
     color: white;
     width: 0%;
 }
+nav{
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+    backdrop-filter: blur(7px);
+}

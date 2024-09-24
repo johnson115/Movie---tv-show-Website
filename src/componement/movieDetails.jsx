@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Star, Calendar, Clock } from "lucide-react";
-import { useSpring, animated } from 'react-spring';
 import React from 'react';
 import Hero from './hero';
+import Searchanimated from './searchanimation';
+import FeedbackModal from './feedbackmodal';
+
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -12,6 +14,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [videoKey, setVideoKey] = useState(null);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -42,6 +45,7 @@ const MovieDetails = () => {
         setVideoKey(trailerKey || ""); // Fallback to empty string if no video key found
 
         setIsLoading(false);
+        setIsFeedbackOpen(true);
       } catch (error) {
         console.error('Error fetching movie data:', error);
       }
@@ -50,18 +54,14 @@ const MovieDetails = () => {
     fetchMovieData();
   }, [id]);
 
-  const animationProps = useSpring({
-    opacity: 1,
-    width: "100%",
-    from: { opacity: 0, width: "30%" },
-    delay: 200,
-  });
+ 
 
   const YouTubeModal = ({ isOpen, onClose, videoKey }) => {
     if (!isOpen || !videoKey) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div className="fixed inset-0  bg-opacity-75 flex items-center justify-center z-50">
+        
         <div className="bg-transparent p-2 pt-5 shadow-lg rounded-lg w-full max-w-2xl relative">
           <button
             onClick={onClose}
@@ -102,40 +102,15 @@ const MovieDetails = () => {
   function renderMovie() {
     if (isLoading) {
       return (
-        <animated.div style={animationProps} className="flex bg-red-300 justify-center items-center min-h-screen">
-          <div>
-            <Hero
-              text="Wait a second ..."
-              className="spinner-border text-dark"
-              role="status"
-            />
-            <div className="card" aria-hidden="true">
-              <div className="card-body">
-                <h5 className="card-title placeholder-glow">
-                  <span className="placeholder col-6">Loading Content</span>
-                </h5>
-                <p className="card-text placeholder-glow">
-                  <span className="placeholder col-7"></span>
-                  <span className="placeholder col-4"></span>
-                  <span className="placeholder col-4"></span>
-                  <span className="placeholder col-6"></span>
-                  <span className="placeholder col-8"></span>
-                </p>
-                <button
-                  className="btn btn-primary disabled placeholder col-6"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </animated.div>
+        <>
+        <Hero text="Hold on a moment" />
+        <Searchanimated/>
+        </>
       );
     }
 
     if (movieDetails) {
-      let poster_path = `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`;
-      if (!movieDetails.poster_path) {
-        poster_path = "https://via.placeholder.com/300x450.png?text=No+Image+Available";
-      }
+      
 
       const backDrop = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`;
       const newPoster_path = `https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`;
@@ -154,8 +129,8 @@ const MovieDetails = () => {
         <>
 
           <Hero text={movieDetails.original_title} backDrop={backDrop} />
-          <div className="min-h-screen w-full bg-red-300 py-8 px-4 md:px-8">
-  <div className="max-w-6xl mx-auto bg-red-700 rounded-lg shadow-md overflow-hidden">
+          <div className="min-h-screen w-full  py-8 px-4 md:px-8"  >
+  <div className="max-w-6xl mx-auto bg-red-700 rounded-lg shadow-md overflow-hidden"  >
     <div className="flex flex-col md:flex-row">
       <div className="w-full">
         <img
@@ -230,6 +205,10 @@ const MovieDetails = () => {
             onClose={() => setIsModalOpen(false)}
             videoKey={videoKey}
           />
+           <FeedbackModal
+          isOpen={isFeedbackOpen}
+          onClose={() => setIsFeedbackOpen(false)}
+        />
         </>
       );
     }

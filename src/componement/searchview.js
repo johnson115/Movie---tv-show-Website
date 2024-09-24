@@ -3,6 +3,7 @@ import NoResults from "./nullSearch";
 import CardItem from "./card";
 import Hero from "./hero";
 import Filtre from "./filtre";
+import Searchanimated from "./searchanimation";
 
 const fetchSearchResults = async (query) => {
     const apiKey = "68638adb4db3967ed4cc1ce3da324fb6"; // Replace with your actual API key
@@ -24,17 +25,20 @@ const fetchSearchResults = async (query) => {
 const Search = ({ keyword }) => {
     const [searchResults, setSearchResults] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
-    const [filterType, setFilterType] = useState("movie"); // State for filtering by movie or tv
+    const [filterType, setFilterType] = useState("movie");
+    const [loading, setLoading] = useState(true); // State for loading animation
 
     useEffect(() => {
         const search = async () => {
+            setLoading(true); // Start loading animation
             const results = await fetchSearchResults(keyword);
-            // Combine both movies and TV shows into a single array
+            
             const combinedResults = [
                 ...results.movies.map(item => ({ ...item, type: 'movie' })),
                 ...results.tvShows.map(item => ({ ...item, type: 'tv' }))
             ];
             setSearchResults(combinedResults);
+            setLoading(false); // Stop loading after data is fetched
         };
 
         search();
@@ -56,14 +60,19 @@ const Search = ({ keyword }) => {
         </div>
     );
 
+    if (loading) {
+        return <Searchanimated />; // Display the loading animation
+    }
+
     if (filteredResults.length === 0) {
-        return <NoResults />;
+        return <NoResults />; // Display if no results found
     }
 
     return (
       <>
         <Hero text={title} />
         <div className="views-back myhome">
+        
           <div className="container mx-auto justify-center px-4">
             {/* Pass the filter change handler to the Filtre component */}
             <Filtre onFilterChange={handleFilterChange} />

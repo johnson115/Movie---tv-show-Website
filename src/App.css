@@ -1,20 +1,25 @@
 body {
-  height: 100vh;
+  height: 100%;
   width:100%;
+
   margin: 0;
+  background-image: url(./componement/media/back.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-color: #b88f33;
+  background-repeat: no-repeat;
   padding: 0;
-  background-color: #fca5a5;
+  
 }
 
 .container {
   position: flex;
   z-index: 200;
   
- 
- 
-  
-  
- 
+
+}
+#drawer{
+  background:linear-gradient(to right , #f3dc6c , #b88f33);
 }
 .filtrage{
   backdrop-filter: blur(14px);
@@ -27,19 +32,27 @@ transition: all 0.7s;
 
 }
 #trailer::focus{
-  background-color: #fca5a5;
+  background:linear-gradient(to right , #f3dc6c , #b88f33);
 }
 #trailer:hover{
   color: black !important;
-  
-  background-color: #fca5a5;
+  transition: all 0.7s;
+  background:linear-gradient(to right , #f3dc6c , #b88f33);
 }
 
 
 .all {
   height: 100vh;
 }
+.notfound{
+  background: transparent;
+   background:linear-gradient(to left , #f3dc6c , #b88f33);
+  backdrop-filter: blur(7px);
+  width: 100%;
+  height:100%;
+  position: absolute;
 
+}
 .hero-text {
   position: relative;
   z-index: 200; /* Keep it on top of the background */
@@ -67,6 +80,17 @@ transition: all 0.7s;
   background-position: center center;
   z-index: 100; /* Lower than the navbar */
 }
+.swal2-install-button {
+  background-color: rgb(30, 158, 30) !important; /* Black background */
+  color: white !important;            /* White text */
+}
+
+.swal2-dismiss-button {
+  background-color: rgb(133, 5, 5);      /* Default background */
+  color: white !important;            /* Black text for dismiss button */
+  border: 1px solid black;            /* Optional: border for dismiss button */
+}
+
 .backend {
   position: absolute;
   top: 8.5%;
@@ -78,12 +102,16 @@ transition: all 0.7s;
 }
 .null-back {
   position: absolute;
-  top: 8.5%;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center center;
+  background: transparent;
+}
+.noresult{
+  width: 400px;
+ top: 20%;
+  margin-top: auto; margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .sicon {
   width: 30px;
@@ -97,11 +125,12 @@ transition: all 0.7s;
 .pub {
   background-color: transparent;
   z-index: 200;
-  color: black;
+  
 }
-.null {
+.pub .null {
   text-align: center;
   margin-top: 12%;
+  background-color:transparent;
 }
 .views-back {
   background-color: black;
@@ -141,18 +170,4 @@ transition: all 0.7s;
   position: relative;
   overflow: hidden;
   height: auto; /* Adjust as needed to ensure it doesn't cause extra space */
-}
-.anim {
-  color: black;
-  animation-name: now;
-  width: 30%;
-  animation-duration: 4s;
-}
-@keyframes now {
-  from {
-    background-color: black;
-  }
-  to {
-    background-color: red;
-  }
 }
